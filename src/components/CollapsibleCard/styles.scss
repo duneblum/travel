@@ -1,0 +1,24 @@
+.card {
+  width: 100%;
+  &-header {
+    background: rgb(255, 247, 247);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid lightgrey;
+    padding: 1rem;
+    justify-content: space-between;
+    &-button {
+      &:hover {
+        cursor: pointer;
+        color: grey;
+      }
+    }
+  }
+  &-body {
+    background: rgb(255, 247, 247);
+    border-radius: 4px;
+    padding: 1rem;
+    border: 1px solid lightgrey;
+  }
+}

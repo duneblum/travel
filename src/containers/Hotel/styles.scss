@@ -1,0 +1,36 @@
+.hotel {
+  margin-top: 50px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+    sans-serif;
+  align-items: center;
+
+  .hotel-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 247, 247);
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    width: 25%;
+    .hotel-rating-grid {
+      display: grid;
+      text-align: center;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hotel-rating-grid-section {
+      }
+    }
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
