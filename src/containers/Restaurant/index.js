@@ -1,11 +1,12 @@
 import React from "react";
 import CollapsibleCard from "../../components/CollapsibleCard";
 import restaurants from "../../../dist/restaurants.json";
+import { useParams } from "react-router-dom";
+
 import "./styles.scss";
 
 const Restaurant = () => {
-  const paths = window.location.hash.split("/");
-  const id = paths[paths.length - 1];
+  const { id } = useParams();
   const restaurantVisits = restaurants.filter(
     (restaurant) => restaurant.id === id
   );

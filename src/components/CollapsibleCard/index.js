@@ -12,7 +12,7 @@ const CollapsibleCard = ({ className, header, body }) => {
           className="card-header-button"
           onClick={() => setShowContentBody(!showContentBody)}
         >
-          {showContentBody ? "^" : "V"}
+          {showContentBody ? "▲" : "▼"}
         </div>
       </div>
       {showContentBody ? <div className="card-body">{body}</div> : null}

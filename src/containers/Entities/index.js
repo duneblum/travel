@@ -37,19 +37,21 @@ const Entities = ({ type }) => {
 
   const renderEntities = (entitiesByCity) => {
     const cities = Object.keys(entitiesByCity);
-    return cities.map((city) => (
+    return cities.sort().map((city) => (
       <div key="city" className="entity">
         <CollapsibleCard
-          header={<div>{city}</div>}
-          body={entitiesByCity[city].map((entity) => (
-            <div
-              key={entity.id}
-              className="entity-item"
-              onClick={() => history.push(`/${type}/${entity.id}`, entity)}
-            >
-              {entity.name}
-            </div>
-          ))}
+          header={<strong>{city}</strong>}
+          body={entitiesByCity[city]
+            .sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map((entity) => (
+              <div
+                key={entity.id}
+                className="entity-item"
+                onClick={() => history.push(`/${type}/${entity.id}`, entity)}
+              >
+                {entity.name}
+              </div>
+            ))}
         />
       </div>
     ));

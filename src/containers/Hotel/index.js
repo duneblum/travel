@@ -1,10 +1,11 @@
 import React from "react";
+import hotels from "../../../dist/hotels.json";
+import { useParams } from "react-router-dom";
 import "./styles.scss";
 
-const Hotel = ({ location }) => {
-  const paths = window.location.hash.split("/");
-  const id = paths[paths.length - 1];
-  const hotel = location.state;
+const Hotel = () => {
+  const { id } = useParams();
+  const hotel = hotels.find((hotel) => hotel.id === id);
 
   return (
     <div className="hotel">
