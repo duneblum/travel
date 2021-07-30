@@ -24,6 +24,9 @@ const Header = () => {
       >
         Supermarkets
       </div>
+      <div className="header-item" onClick={() => history.push("/statistics")}>
+        Statistics
+      </div>
       <label className="header-label">Search</label>
       <input className="header-searchbox"></input>
     </div>

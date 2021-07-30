@@ -38,7 +38,7 @@ const Entities = ({ type }) => {
   const renderEntities = (entitiesByCity) => {
     const cities = Object.keys(entitiesByCity);
     return cities.sort().map((city) => (
-      <div key="city" className="entity">
+      <div key={city} className="entity">
         <CollapsibleCard
           header={<strong>{city}</strong>}
           body={entitiesByCity[city]

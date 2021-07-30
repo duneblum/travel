@@ -1,5 +1,6 @@
 import React from "react";
 import CollapsibleCard from "../../components/CollapsibleCard";
+import Scorebox from "../../components/Scorebox";
 import restaurants from "../../../dist/restaurants.json";
 import { useParams } from "react-router-dom";
 
@@ -24,8 +25,8 @@ const Restaurant = () => {
       }`}</h2>
       <h3>Overall</h3>
       <div className="restaurant-overall">
-        <div>{restaurant.overall_notes}</div>
-        <strong>Rating: {restaurant.overall_rating}</strong>
+        <Scorebox rating={restaurant.overall_rating} />{" "}
+        <div className="restaurant-notes">{restaurant.overall_notes}</div>
       </div>
       <h3>Visits</h3>
       <div className="restaurant-visits">

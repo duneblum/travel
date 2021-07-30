@@ -7,7 +7,7 @@
   font-family: "Helvetica", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   align-items: center;
 
-  .restaurant-overall {
+  /*.restaurant-overall {
     padding-top: 24px;
     padding-bottom: 24px;
     display: flex;
@@ -23,6 +23,14 @@
       width: 100%;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }*/
+  &-overall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &-notes {
+    padding-top: 0.5rem;
   }
   &-visits {
     width: 100%;
