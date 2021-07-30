@@ -49,6 +49,7 @@ const Statistics = () => {
           .slice(0, 5)
           .map((restaurant) => (
             <div
+              className="link"
               onClick={() => history.push(`/restaurant/${restaurant.id}`)}
             >{`${restaurant.name} - ${restaurant.city}`}</div>
           ))}
