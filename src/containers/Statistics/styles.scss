@@ -1,0 +1,13 @@
+.link {
+  align-items: center;
+  width: fit-content;
+  padding-bottom: 0.25rem;
+  &:hover {
+    color: hsl(240, 100%, 85%);
+    cursor: pointer;
+  }
+}
+
+.statistics {
+  padding: 1rem;
+}

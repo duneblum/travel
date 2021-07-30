@@ -7,6 +7,7 @@ import Footer from "../src/components/Footer";
 import Home from "../src/containers/Home";
 import Restaurant from "../src/Containers/Restaurant";
 import Supermarket from "../src/Containers/Supermarket";
+import Statistics from "../src/Containers/Statistics";
 import "./styles.scss";
 
 const Page = (props) => {
@@ -34,6 +35,7 @@ const Routes = () => {
       <Page path="/supermarket/:id" component={Supermarket} />
       <Page path="/hotels" render={() => <Entities type="hotel" />} />
       <Page path="/hotel/:id" component={Hotel} />
+      <Page path="/statistics" component={Statistics} />
     </Switch>
   );
 };
