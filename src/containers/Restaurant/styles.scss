@@ -4,33 +4,18 @@
   width: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
-  font-family: "Helvetica", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   align-items: center;
 
-  /*.restaurant-overall {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(255, 247, 247);
-    flex-direction: column;
-    border: 1px solid lightgrey;
-    width: 25%;
-    .restaurant-rating-grid {
-      display: grid;
-      text-align: center;
-      width: 100%;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }*/
+  &-map {
+    margin-bottom: 316px;
+  }
   &-overall {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   &-notes {
-    padding-top: 0.5rem;
+    padding-top: 1rem;
   }
   &-visits {
     width: 100%;

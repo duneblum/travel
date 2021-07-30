@@ -12,6 +12,7 @@ const Entities = ({ type }) => {
   const getOrderedEntitiesByCity = () => {
     const orderEntitiesByCity = (entityList) => {
       const dictionary = {};
+      console.log(entityList);
       entityList.forEach((entity) => {
         if (dictionary[entity.city]) {
           if (!dictionary[entity.city].find((entry) => entry.id === entity.id))
