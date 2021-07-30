@@ -1,18 +1,23 @@
 import React from "react";
 import hotels from "../../../dist/hotels.json";
 import { useParams } from "react-router-dom";
+import SingleLocationMap from "../../components/SingleLocationMap";
 import "./styles.scss";
 
 const Hotel = () => {
   const { id } = useParams();
   const hotel = hotels.find((hotel) => hotel.id === id);
+  const formattedAddress = `${hotel.street_address}, ${hotel.city}, ${
+    hotel.state ?? hotel.country
+  }`;
 
   return (
     <div className="hotel">
       <h1 className="hotel-name">{hotel.name}</h1>
-      <h2>{`${hotel.street_address} ${hotel.city}, ${
-        hotel.state ?? hotel.country
-      }`}</h2>
+      <h2>{formattedAddress}</h2>
+      <div className="hotel-map">
+        <SingleLocationMap name={hotel.name} address={formattedAddress} />
+      </div>
       <h3>Stays:</h3>
       <div>{`${hotel.start_date} - ${hotel.end_date}`}</div>
       <div>{hotel.notes}</div>

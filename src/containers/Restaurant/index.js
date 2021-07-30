@@ -18,9 +18,7 @@ const Restaurant = () => {
   const ordersByVisit = restaurantVisits.map((visit) => ({
     date_time: visit.date_time,
     orders: visit.orders.split(";").map((order) => {
-      console.log(order);
       const noteStartPosition = order.indexOf("(");
-      console.log(noteStartPosition);
       const noteEndPosition = order.indexOf(")");
       const ratingStartPosition = order.indexOf("[");
       const ratingEndPosition = order.indexOf("]");
@@ -73,11 +71,17 @@ const Restaurant = () => {
             })}
             body={visit.orders.map((order) => (
               <div>
-                <div>{`Item: ${order?.item.replace(")", "")}`}</div>
-                {order?.notes ? (
-                  <div>{`Notes: ${order?.notes.replace(")", "")}`} </div>
-                ) : null}
-                <div>{`Review: ${order?.review.replace(")", "")}`}</div>
+                <div>{`Item: ${order?.item}`}</div>
+                {order?.notes ? <div>{`Notes: ${order?.notes}`} </div> : null}
+                <div>{`Review: ${
+                  order?.review === "/10"
+                    ? ordersByVisit.map((visit) =>
+                        visit.orders.find(
+                          (searchOrder) => searchOrder.item === order.item
+                        )
+                      )[0]?.review
+                    : order.review
+                }`}</div>
               </div>
             ))}
           />
