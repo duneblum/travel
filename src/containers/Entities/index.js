@@ -2,7 +2,6 @@ import React from "react";
 import hotels from "../../../dist/hotels.json";
 import restaurants from "../../../dist/restaurants.json";
 import supermarkets from "../../../dist/supermarkets.json";
-import Header from "../../components/Header";
 import CollapsibleCard from "../../components/CollapsibleCard";
 import { useHistory } from "react-router-dom";
 import "./styles.scss";
@@ -57,13 +56,10 @@ const Entities = ({ type }) => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="entities">
-        <h1>Cities</h1>
-        {renderEntities(getOrderedEntitiesByCity())}
-      </div>
-    </>
+    <div className="entities">
+      <h1>Cities</h1>
+      {renderEntities(getOrderedEntitiesByCity())}
+    </div>
   );
 };
 
