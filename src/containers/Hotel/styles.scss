@@ -7,6 +7,11 @@
     sans-serif;
   align-items: center;
 
+  &-tags {
+    display: flex;
+    flex-direction: row;
+  }
+
   &-map {
     margin-bottom: 316px;
   }

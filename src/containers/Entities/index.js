@@ -3,6 +3,7 @@ import hotels from "../../../dist/hotels.json";
 import restaurants from "../../../dist/restaurants.json";
 import supermarkets from "../../../dist/supermarkets.json";
 import CollapsibleCard from "../../components/CollapsibleCard";
+import TagsList from "../../components/TagsList";
 import { useHistory } from "react-router-dom";
 import "./styles.scss";
 
@@ -45,12 +46,15 @@ const Entities = ({ type }) => {
           body={entitiesByCity[city]
             .sort((a, b) => (a.name > b.name ? 1 : -1))
             .map((entity) => (
-              <div
-                key={entity.id}
-                className="entity-item"
-                onClick={() => history.push(`/${type}/${entity.id}`, entity)}
-              >
-                {entity.name}
+              <div className="entity-wrapper">
+                <div
+                  key={entity.id}
+                  className="entity-item"
+                  onClick={() => history.push(`/${type}/${entity.id}`, entity)}
+                >
+                  {entity.name}
+                </div>
+                <TagsList tags={entity.tags.split(",")} />
               </div>
             ))}
         />

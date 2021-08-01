@@ -3,6 +3,7 @@ import supermarkets from "../../../dist/supermarkets.json";
 import PriceScale from "../../components/PriceScale";
 import Scorebox from "../../components/ScoreBox";
 import SingleLocationMap from "../../components/SingleLocationMap";
+import TagsList from "../../components/TagsList";
 
 import { useParams } from "react-router-dom";
 import "./styles.scss";
@@ -15,6 +16,9 @@ const Supermarket = () => {
     <div className="supermarket">
       <PriceScale priceRating={supermarket.price_scale} optionCount={4} />
       <h1>{supermarket.name}</h1>
+      <div className="supermarket-tags">
+        <TagsList tags={supermarket.tags.split(",")} />
+      </div>
       <h2>{`${supermarket.street_address} ${supermarket.city}, ${
         supermarket.state ?? supermarket.country
       }`}</h2>

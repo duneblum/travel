@@ -5,6 +5,7 @@ import restaurants from "../../../dist/restaurants.json";
 import PriceScale from "../../components/PriceScale";
 import SingleLocationMap from "../../components/SingleLocationMap";
 import { useParams } from "react-router-dom";
+import TagsList from "../../components/TagsList";
 
 import "./styles.scss";
 
@@ -14,7 +15,6 @@ const Restaurant = () => {
     (restaurant) => restaurant.id === id
   );
   const restaurant = restaurantVisits[0];
-  console.log(restaurant);
   const ordersByVisit = restaurantVisits.map((visit) => ({
     date_time: visit.date_time,
     orders: visit.orders.split(";").map((order) => {
@@ -38,8 +38,14 @@ const Restaurant = () => {
 
   return (
     <div className="restaurant">
-      <PriceScale priceRating={restaurant.price_scale} optionCount={4} />
+      <PriceScale
+        priceRating={Number(restaurant.price_scale.charAt(0))}
+        optionCount={Number(restaurant.price_scale.charAt(2))}
+      />
       <h1 className="restaurant-name">{restaurant.name}</h1>
+      <div className="restaurant-tags">
+        <TagsList tags={restaurant.tags.split(",")} />
+      </div>
       <h2>{`${restaurant.street_address} ${restaurant.city}, ${
         restaurant.state ?? restaurant.country
       }`}</h2>
@@ -69,21 +75,28 @@ const Restaurant = () => {
               hour: "numeric",
               minute: "numeric",
             })}
-            body={visit.orders.map((order) => (
+            body={
               <div>
-                <div>{`Item: ${order?.item}`}</div>
-                {order?.notes ? <div>{`Notes: ${order?.notes}`} </div> : null}
-                <div>{`Review: ${
-                  order?.review === "/10"
-                    ? ordersByVisit.map((visit) =>
-                        visit.orders.find(
-                          (searchOrder) => searchOrder.item === order.item
-                        )
-                      )[0]?.review
-                    : order.review
-                }`}</div>
+                <h3>Order</h3>
+                {visit.orders.map((order) => (
+                  <div className="order">
+                    <div>{`Item: ${order?.item}`}</div>
+                    {order?.notes ? (
+                      <div>{`Notes: ${order?.notes}`} </div>
+                    ) : null}
+                    <div>{`Rating: ${
+                      order?.review === "/10"
+                        ? ordersByVisit.map((visit) =>
+                            visit.orders.find(
+                              (searchOrder) => searchOrder.item === order.item
+                            )
+                          )[0]?.review
+                        : order.review
+                    }`}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            }
           />
         ))}
       </div>

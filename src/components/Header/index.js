@@ -24,6 +24,9 @@ const Header = () => {
       >
         Supermarkets
       </div>
+      <div className="header-item" onClick={() => history.push("/flights")}>
+        Flights
+      </div>
       <div className="header-item" onClick={() => history.push("/statistics")}>
         Statistics
       </div>

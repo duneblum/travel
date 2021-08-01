@@ -2,6 +2,7 @@ import React from "react";
 import hotels from "../../../dist/hotels.json";
 import { useParams } from "react-router-dom";
 import SingleLocationMap from "../../components/SingleLocationMap";
+import TagsList from "../../components/TagsList";
 import "./styles.scss";
 
 const Hotel = () => {
@@ -14,6 +15,9 @@ const Hotel = () => {
   return (
     <div className="hotel">
       <h1 className="hotel-name">{hotel.name}</h1>
+      <div className="hotel-tags">
+        <TagsList tags={hotel.tags.split(",")} />
+      </div>
       <h2>{formattedAddress}</h2>
       <div className="hotel-map">
         <SingleLocationMap name={hotel.name} address={formattedAddress} />

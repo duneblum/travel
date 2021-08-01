@@ -8,6 +8,10 @@
   &-map {
     margin-bottom: 316px;
   }
+  &-tags {
+    display: flex;
+    flex-direction: row;
+  }
   &-notes {
     padding-top: 16px;
   }

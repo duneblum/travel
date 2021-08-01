@@ -6,6 +6,11 @@
   flex-direction: column;
   align-items: center;
 
+  &-tags {
+    display: flex;
+    flex-direction: row;
+  }
+
   &-map {
     margin-bottom: 316px;
   }
@@ -22,6 +27,13 @@
     align-items: left;
     &-visit {
       padding-bottom: 1rem;
+
+      .order {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+      }
     }
   }
 }
