@@ -4,13 +4,19 @@ import PriceScale from "../../components/PriceScale";
 import Scorebox from "../../components/ScoreBox";
 import SingleLocationMap from "../../components/SingleLocationMap";
 import TagsList from "../../components/TagsList";
+import isEqual from "lodash/isEqual";
 
 import { useParams } from "react-router-dom";
 import "./styles.scss";
 
 const Supermarket = () => {
   const { id } = useParams();
-  const supermarket = supermarkets.find((supermarket) => supermarket.id === id);
+  const supermarket = supermarkets.find((supermarket) =>
+    isEqual(supermarket.id, id)
+  );
+  const formattedAddress = `${supermarket.street_address} ${
+    supermarket.city
+  }, ${supermarket.state ?? supermarket.country}`;
 
   return (
     <div className="supermarket">
@@ -19,16 +25,9 @@ const Supermarket = () => {
       <div className="supermarket-tags">
         <TagsList tags={supermarket.tags.split(",")} />
       </div>
-      <h2>{`${supermarket.street_address} ${supermarket.city}, ${
-        supermarket.state ?? supermarket.country
-      }`}</h2>
+      <h2>{formattedAddress}</h2>
       <div className="supermarket-map">
-        <SingleLocationMap
-          name={supermarket.name}
-          address={`${supermarket.street_address}, ${supermarket.city}, ${
-            supermarket.state ?? supermarket.country
-          }`}
-        />
+        <SingleLocationMap name={supermarket.name} address={formattedAddress} />
       </div>
       <div className="supermarket-overall">
         <Scorebox rating={supermarket.overall_rating} />

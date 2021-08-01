@@ -6,35 +6,21 @@ import PriceScale from "../../components/PriceScale";
 import SingleLocationMap from "../../components/SingleLocationMap";
 import { useParams } from "react-router-dom";
 import TagsList from "../../components/TagsList";
+import isEqual from "lodash/isEqual";
+import { parseRestaurantOrders } from "./utils";
 
 import "./styles.scss";
 
 const Restaurant = () => {
   const { id } = useParams();
-  const restaurantVisits = restaurants.filter(
-    (restaurant) => restaurant.id === id
+  const restaurantVisits = restaurants.filter((restaurant) =>
+    isEqual(restaurant.id, id)
   );
+
+  // utilize first visit since future visits aren't complete datsets
   const restaurant = restaurantVisits[0];
-  const ordersByVisit = restaurantVisits.map((visit) => ({
-    date_time: visit.date_time,
-    orders: visit.orders.split(";").map((order) => {
-      const noteStartPosition = order.indexOf("(");
-      const noteEndPosition = order.indexOf(")");
-      const ratingStartPosition = order.indexOf("[");
-      const ratingEndPosition = order.indexOf("]");
-      return {
-        item:
-          noteStartPosition !== -1
-            ? order.substring(0, noteStartPosition)
-            : order.substring(0, ratingStartPosition),
-        notes:
-          noteStartPosition !== -1
-            ? order.substring(noteStartPosition + 1, noteEndPosition)
-            : null,
-        review: order.substring(ratingStartPosition + 1, ratingEndPosition),
-      };
-    }),
-  }));
+
+  const ordersByVisit = parseRestaurantOrders(restaurantVisits);
 
   return (
     <div className="restaurant">
