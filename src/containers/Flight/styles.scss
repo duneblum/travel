@@ -1,0 +1,9 @@
+.flight {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .flightCard {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}

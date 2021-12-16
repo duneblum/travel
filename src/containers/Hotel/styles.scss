@@ -6,6 +6,8 @@
   font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
     sans-serif;
   align-items: center;
+  overflow-y: scroll;
+  position: relative;
 
   &-tags {
     display: flex;
@@ -14,13 +16,17 @@
 
   &-map {
     margin-bottom: 316px;
+    position: relative;
+  }
+
+  &-stays {
+    padding-bottom: 1rem;
   }
 
   .hotel-rating {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(255, 247, 247);
     flex-direction: column;
     border: 1px solid lightgrey;
     width: 25%;
@@ -33,12 +39,4 @@
       }
     }
   }
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-  margin: 0;
 }

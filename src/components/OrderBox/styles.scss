@@ -1,0 +1,14 @@
+.orderBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px lightgrey solid;
+  background: white;
+  &-name {
+    padding-bottom: 0.25rem;
+  }
+  &-description {
+    padding-bottom: 0.25rem;
+  }
+}

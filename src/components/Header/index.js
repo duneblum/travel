@@ -1,37 +1,40 @@
 import React from "react";
-import "./styles.scss";
 import { useHistory } from "react-router-dom";
+
+const HeaderOption = ({ route, name }) => {
+  const history = useHistory();
+
+  return (
+    <div
+      className="text-xl text-text-secondary px-2"
+      onClick={() => history.push(route)}
+    >
+      <div className="cursor-pointer hover:text-text-primary">{name}</div>
+    </div>
+  );
+};
 
 const Header = () => {
   const history = useHistory();
   return (
-    <div className="header">
-      <div className="header-item" onClick={() => history.push("/")}>
-        Home
+    <div className="flex flex-row w-full justify-between items-center py-4 pl-8 bg-primary-background">
+      <div className="flex flex-row justify-between items-center w-full">
+        <div className="text-3xl" onClick={() => history.push("/")}>
+          <div className="flex items-center">
+            <strong className="text-text-tertiary">bloo</strong>
+            <span className="text-text-secondary pl-2">travel</span>
+            <img src="src/www/assets/bloo_logo.png" />
+          </div>
+        </div>
+        <div className="flex items-center pr-6">
+          <HeaderOption route="/locations" name="Map" />
+          <HeaderOption route="/hotels" name="Hotels" />
+          <HeaderOption route="/restaurants" name="Restaurants" />
+          <HeaderOption route="/supermarkets" name="Supermarkets" />
+          <HeaderOption route="/trips" name="Trips" />
+          <HeaderOption route="/statistics" name="Statistics" />
+        </div>
       </div>
-      <div className="header-item" onClick={() => history.push("/locations")}>
-        Locations
-      </div>
-      <div className="header-item" onClick={() => history.push("/hotels")}>
-        Hotels
-      </div>
-      <div className="header-item" onClick={() => history.push("/restaurants")}>
-        Restaurants
-      </div>
-      <div
-        className="header-item"
-        onClick={() => history.push("/supermarkets")}
-      >
-        Supermarkets
-      </div>
-      <div className="header-item" onClick={() => history.push("/flights")}>
-        Flights
-      </div>
-      <div className="header-item" onClick={() => history.push("/statistics")}>
-        Statistics
-      </div>
-      <label className="header-label">Search</label>
-      <input className="header-searchbox"></input>
     </div>
   );
 };

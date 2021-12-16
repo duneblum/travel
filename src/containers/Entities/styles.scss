@@ -1,5 +1,24 @@
 .entities {
-  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  &-body {
+    overflow-y: scroll;
+    width: 100%;
+    padding-left: 1rem;
+  }
+
+  &-list {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  &-selected {
+    padding-left: 0.25rem;
+  }
+
   .entity {
     display: flex;
     flex-direction: column;
@@ -18,11 +37,12 @@
       border: 1px solid lightgrey;
     }
     &-item {
+      font-size: large;
       align-items: center;
       width: fit-content;
       padding: 0.25rem;
       &:hover {
-        color: hsl(240, 100%, 85%);
+        color: royalblue;
         cursor: pointer;
       }
     }

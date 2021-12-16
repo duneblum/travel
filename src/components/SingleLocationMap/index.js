@@ -1,36 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
-import Geocode from "react-geocode";
 import "./styles.scss";
 
-const getCoordinatesPromise = async (address) => {
-  Geocode.setApiKey("AIzaSyBnWkSHaVlnJG66r99YmHqdylrX95eFELs");
-
-  return await Geocode.fromAddress(address).then(
-    (response) => {
-      return Promise.resolve(response.results[0].geometry.location);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
-};
-
-const SingleLocationMap = ({ name, address, google }) => {
-  console.log(address);
-  const [coordinates, setCoordinates] = useState(null);
+const SingleLocationMap = ({ name, address, google, coordinates }) => {
   const [marker, setMarker] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
-
-  useEffect(() => {
-    const getCoordinates = async () => {
-      console.log(address);
-      const result = await getCoordinatesPromise(address);
-      console.log(result);
-      setCoordinates(result);
-    };
-    getCoordinates();
-  }, [address]);
 
   return coordinates ? (
     <div className="map">
@@ -40,9 +14,14 @@ const SingleLocationMap = ({ name, address, google }) => {
         style={{
           position: "absolute",
         }}
-        initialCenter={coordinates}
+        initialCenter={{ lat: coordinates[0], lng: coordinates[1] }}
       >
-        <Marker onClick={({ marker }) => setMarker(marker)} />
+        <Marker
+          onClick={(e, marker) => {
+            setShowInfo(true);
+            setMarker(marker);
+          }}
+        />
         <InfoWindow
           visible={showInfo}
           marker={marker}
@@ -59,5 +38,5 @@ const SingleLocationMap = ({ name, address, google }) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBnWkSHaVlnJG66r99YmHqdylrX95eFELs",
+  apiKey: "AIzaSyC5gRVM1Nrp6P2Ur3W7q3G9LGEkEamJMWY",
 })(SingleLocationMap);

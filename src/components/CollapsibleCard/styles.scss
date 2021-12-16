@@ -1,23 +1,24 @@
 .card {
   width: 100%;
   &-header {
-    background: rgb(255, 247, 247);
-    border-radius: 4px;
+    border-radius: 0.25rem;
     display: flex;
     flex-direction: row;
     border: 1px solid lightgrey;
-    padding: 1rem;
     justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
     &-button {
+      padding: 1rem;
+
       &:hover {
         cursor: pointer;
-        color: hsl(240, 100%, 85%);
+        color: royalblue;
       }
     }
   }
   &-body {
-    background: rgb(255, 247, 247);
-    border-radius: 4px;
+    border-radius: 0.25rem;
     padding: 1rem;
     border: 1px solid lightgrey;
   }

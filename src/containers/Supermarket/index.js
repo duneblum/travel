@@ -27,7 +27,11 @@ const Supermarket = () => {
       </div>
       <h2>{formattedAddress}</h2>
       <div className="supermarket-map">
-        <SingleLocationMap name={supermarket.name} address={formattedAddress} />
+        <SingleLocationMap
+          name={supermarket.name}
+          address={formattedAddress}
+          coordinates={supermarket.coordinates.split(", ")}
+        />
       </div>
       <div className="supermarket-overall">
         <Scorebox rating={supermarket.overall_rating} />

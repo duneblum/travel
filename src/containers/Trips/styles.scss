@@ -1,0 +1,14 @@
+.header {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(4, 25%);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+.trip {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(4, 25%);
+  padding-bottom: 0.25rem;
+}

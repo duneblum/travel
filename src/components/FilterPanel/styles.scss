@@ -1,0 +1,22 @@
+.filterPanel {
+  height: 100%;
+  width: 15%;
+  border-right: 1px solid lightgrey;
+  overflow-y: scroll;
+  padding: 0 0.5rem;
+  &-item {
+    border: 1px solid lightgrey;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    background: white;
+    &:hover {
+      background-color: whitesmoke;
+      cursor: pointer;
+    }
+  }
+
+  .selected {
+    background: lightgray;
+  }
+}
